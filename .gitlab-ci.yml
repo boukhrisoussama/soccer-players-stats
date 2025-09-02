@@ -60,10 +60,15 @@ package-job:   # This job runs in the test stage.
   script:
     - mvn $MAVEN_CLI_OPTS package -DskipTests
 
-deploy-job: # This job runs in the deploy stage.
+deploy-job:
   stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
   script:
-    - mvn $MAVEN_CLI_OPTS package
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
   environment:
     name: review/$CI_COMMIT_REF_NAME
     url: https://$CI_ENVIRONMENT_SLUG.example.com
