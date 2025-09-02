@@ -1,0 +1,33 @@
+id,firstName,lastName,birthDate,position,nationality,matchesPlayed,goalsScored,assistsMade,yellowCards,redCards,minutesPlayed
+EST001,Amenallah,Memmiche,2004-04-20,Goalkeeper,Tunisia,0,0,0,0,0,0
+EST002,Mokhtar,Ifaoui,2003-03-02,Goalkeeper,Tunisia,0,0,0,0,0,0
+EST003,Mohamed Sedki,Debchi,1999-10-28,Goalkeeper,Tunisia,0,0,0,0,0,0
+EST004,Bechir,Ben Saïd,1992-11-29,Goalkeeper,Tunisia,0,0,0,0,0,0
+EST005,Mohamed,Ben Ali,1995-02-16,Defender,Tunisia,0,0,0,0,0,0
+EST006,Ibrahima,Keita,2001-11-08,Defender,Mali,0,0,0,0,0,0
+EST007,Yassine,Meriah,1993-07-02,Defender,Tunisia,0,0,0,0,0,0
+EST008,Mohamed Amine,Tougai,2000-01-22,Defender,Algeria,0,0,0,0,0,0
+EST009,Mohamed Amine,Ben Hamida,1995-12-15,Defender,Tunisia,0,0,0,0,0,0
+EST010,Yan,Sasse,1997-06-24,Midfielder,Brazil,0,0,0,0,0,0
+EST011,Onuche,Ogbelu,2003-05-10,Midfielder,Nigeria,0,0,0,0,0,0
+EST012,Khalil,Guenichi,2002-12-11,Midfielder,Tunisia,0,0,0,0,0,0
+EST013,Chiheb,Jebali,1996-05-26,Midfielder,Tunisia,0,0,0,0,0,0
+EST014,Youcef,Belaïli,1992-03-14,Forward,Algeria,0,0,0,0,0,0
+EST015,Elias,Mokwana,1999-07-25,Forward,South Africa,0,0,0,0,0,0
+CSS001,Mohamed Hedi,Gaaloul,1989-10-14,Goalkeeper,Tunisia,0,0,0,0,0,0
+CSS002,Mohamed Ali,Jamia,2003-11-06,Goalkeeper,Tunisia,0,0,0,0,0,0
+CSS003,Mohamed,Nasraoui,2002-08-18,Defender,Tunisia,0,0,0,0,0,0
+ESS001,Malek,Baayou,1999-04-29,Midfielder,Tunisia,0,0,0,0,0,0
+ESS002,Walid,Karoui,1996-03-25,Midfielder,Tunisia,0,0,0,0,0,0
+ESS003,Mohamed Amine,Ben Amor,1992-05-03,Midfielder,Tunisia,0,0,0,0,0,0
+USM001,Rayane,Azzouz,,Defender,Tunisia,0,0,0,0,0,0
+USM002,Abderrahman,Bouzganda,,Defender,Tunisia,0,0,0,0,0,0
+USM003,Moez,Haj Ali,,Midfielder,Tunisia,0,0,0,0,0,0
+USM004,Ousmane,Diané,,Midfielder,Senegal,0,0,0,0,0,0
+CA001,Hamza,Agrebi,1993-03-07,Defender,Tunisia,0,0,0,0,0,0
+CA002,Bilel,Ifa,1990-03-09,Defender,Tunisia,0,0,0,0,0,0
+CA003,Seifeddine,Jaziri,1993-02-12,Forward,Tunisia,0,0,0,0,0,0
+ST001,Zied,Ounalli,1994-02-08,Midfielder,Tunisia,0,0,0,0,0,0
+ST002,Bilel,Saidani,1993-03-28,Midfielder,Tunisia,0,0,0,0,0,0
+USBG001,Elyes,Jlassi,1993-02-20,Midfielder,Tunisia,0,0,0,0,0,0
+OB001,Elyes,Dhaoui,2008-04-15,Midfielder,Tunisia,0,0,0,0,0,0

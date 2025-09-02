@@ -1,0 +1,33 @@
+app:
+  name: soccer-players-stats
+  version: 1.0.0
+
+jwt:
+  header: Authorization
+  expires_in: 600 # 10 minutes
+  secret: soccer_stats_application_secret_key
+  cookie: AUTH-TOKEN
+
+spring:
+  sql:
+    init:
+      mode: always
+  jackson:
+    default-property-inclusion: NON_NULL
+    serialization:
+      write-dates-as-timestamps: true
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:players-data
+    username: sa
+    password: sa
+  application.name: soccer-players-stats
