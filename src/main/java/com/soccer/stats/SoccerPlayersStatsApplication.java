@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StringUtils;
 
@@ -38,6 +39,7 @@ public class SoccerPlayersStatsApplication {
         }
     }
 
+    @Bean
     public static CommandLineRunner loadCsvData(TeamRepository teamRepository, PlayerRepository playerRepository) throws IOException {
         return args -> {
             // Load Teams
