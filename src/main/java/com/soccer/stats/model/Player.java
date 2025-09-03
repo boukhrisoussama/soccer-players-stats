@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "PLAYERS")
-public class Player {
+public class Player implements ModelObject {
 
     @Id
     String id;

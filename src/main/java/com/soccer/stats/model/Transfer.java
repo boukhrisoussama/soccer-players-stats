@@ -15,8 +15,8 @@ import java.time.LocalDate;
 @Data
 @Builder
 @Entity
-@Table(name = "TRANSFER_HISTORY")
-public class Transfer {
+@Table(name = "TRANSFERS")
+public class Transfer implements ModelObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
