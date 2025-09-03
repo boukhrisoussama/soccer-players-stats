@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 @Entity
 @Table(name = "TEAMS")
-public class Team {
+public class Team implements ModelObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
