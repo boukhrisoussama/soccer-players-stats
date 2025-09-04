@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Season implements ModelObject {
 
     @Id
-    private int year;
+    private Long yearSeason;
     private String name;
     private boolean isCurrent;
     private boolean isCompleted;
