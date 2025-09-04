@@ -29,8 +29,7 @@ variables:
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
-#  - package
-#  - deploy
+  - package
 
 include:
   - template: Security/Dependency-Scanning.gitlab-ci.yml
