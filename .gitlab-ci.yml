@@ -62,10 +62,11 @@ package-job:
     - docker:dind
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+#  before_script:
+#    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
   script:
-    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" .
+    - echo "No packaging for now !"
+#    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" .
 #    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
 
 #deploy-job:
