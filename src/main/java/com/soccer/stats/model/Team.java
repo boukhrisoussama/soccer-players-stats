@@ -12,7 +12,6 @@ import lombok.*;
 public class Team implements ModelObject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "name", unique = true)

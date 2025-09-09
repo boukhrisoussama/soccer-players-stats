@@ -1,0 +1,167 @@
+[
+  {
+    "id": "fa42d32d-88a6-4a93-8cd3-ade0d4dcaef5",
+    "name": "AS Gabès",
+    "foundedYear": null,
+    "president": "",
+    "stadium": "Gabès Municipal Stadium",
+    "city": "Gabès",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/0/00/AS_Gab%C3%A8s_%28logo%29.png"
+  },
+  {
+    "id": "3fadf1ab-2762-4c87-b8fe-4fc3b8e6a6b2",
+    "name": "AS Marsa",
+    "foundedYear": null,
+    "president": "",
+    "stadium": "Abdelaziz Chtioui Stadium",
+    "city": "Tunis (La Marsa)",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/9/97/Asm_logo.png"
+  },
+  {
+    "id": "229ed82a-56ea-44b5-8898-35675cba3342",
+    "name": "AS Soliman",
+    "foundedYear": null,
+    "president": "",
+    "stadium": "Soliman Municipal Stadium",
+    "city": "Soliman",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/1/1b/AS_Soliman.png"
+  },
+  {
+    "id": "b9b884a8-c8eb-46c5-a4f7-94774733a09f",
+    "name": "CA Bizertin",
+    "foundedYear": 1928,
+    "president": "Samir Yacoub",
+    "stadium": "15 October Stadium",
+    "city": "Bizerte",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/2/2b/CAB_logo2.png"
+  },
+  {
+    "id": "040e9707-d62d-475b-8d65-c7a2b5637338",
+    "name": "CS Sfaxien",
+    "foundedYear": 1928,
+    "president": "",
+    "stadium": "Taieb Mhiri Stadium",
+    "city": "Sfax",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/4/45/CS_Sfaxien.gif"
+  },
+  {
+    "id": "e3cafdee-d511-4bd1-ba32-66ff14514acc",
+    "name": "ES Métlaoui",
+    "foundedYear": null,
+    "president": "",
+    "stadium": "Métlaoui Municipal Stadium",
+    "city": "Métlaoui",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/f/f9/%C3%89toile_sportive_de_M%C3%A9tlaoui.png"
+  },
+  {
+    "id": "3aa8e5aa-36b3-42f0-a642-8cfc5ab71fb8",
+    "name": "Étoile du Sahel",
+    "foundedYear": 1925,
+    "president": "",
+    "stadium": "Sousse Olympic Stadium",
+    "city": "Sousse",
+    "country": "Tunisia",
+    "website": "https://etoiledusahel.com",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/5/52/Blason_%C3%A9toile_du_sahel.svg"
+  },
+  {
+    "id": "14f75dbe-f224-493d-b6cf-bfa74bac3ac6",
+    "name": "Espérance de Tunis",
+    "foundedYear": 1919,
+    "president": "Hamdi Meddeb",
+    "stadium": "Hammadi Agrebi Stadium",
+    "city": "Tunis (Bab Souika)",
+    "country": "Tunisia",
+    "website": "http://est.org.tn",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/6/6b/EST_New_Logo_2012.png"
+  },
+  {
+    "id": "fd8dc8f1-54de-4ba9-be94-efaade4057c4",
+    "name": "Espérance de Zarzis",
+    "foundedYear": 1934,
+    "president": "",
+    "stadium": "Abdessalam Kazouz Stadium",
+    "city": "Zarzis",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/4/47/Esz.png"
+  },
+  {
+    "id": "7eb19333-43da-453d-8b82-459ec01cc948",
+    "name": "JS Kairouan",
+    "foundedYear": 1942,
+    "president": "",
+    "stadium": "Hamda Laouani Stadium",
+    "city": "Kairouan",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/d/db/Jeunesse_sportive_kairouanaise.png"
+  },
+  {
+    "id": "3bd65ee2-848f-4ad7-8658-65024438a52e",
+    "name": "JS El Omrane",
+    "foundedYear": 1943,
+    "president": "Rafik Bahri",
+    "stadium": "Chedly Zouiten Stadium",
+    "city": "Tunis (El Omrane)",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/d/d4/JSO_Logo.png"
+  },
+  {
+    "id": "5e3be310-fc33-4ea2-9b94-36cda0dc2758",
+    "name": "Olympique Béja",
+    "foundedYear": 1929,
+    "president": "",
+    "stadium": "Boujemaa Kmiti Stadium",
+    "city": "Béja",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/e/e7/Olympique_de_Beja-1-.gif"
+  },
+  {
+    "id": "edad8616-7661-42ee-97d0-bec6735a35eb",
+    "name": "Stade Tunisien",
+    "foundedYear": 1948,
+    "president": "",
+    "stadium": "Hédi Enneifer Stadium",
+    "city": "Tunis (Le Bardo)",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/d/d7/Logo_Stade_tunisien.svg"
+  },
+  {
+    "id": "3018b67c-ca81-4d43-903e-de19e5373e55",
+    "name": "US Ben Guerdane",
+    "foundedYear": 1936,
+    "president": "",
+    "stadium": "7 March Stadium",
+    "city": "Ben Guerdane",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/c/c9/US_Ben_Guerdane.png"
+  },
+  {
+    "id": "b238f4ac-d289-40a2-82fd-0a1b139c4ed4",
+    "name": "US Monastir",
+    "foundedYear": 1923,
+    "president": "",
+    "stadium": "Mustapha Ben Jannet Stadium",
+    "city": "Monastir",
+    "country": "Tunisia",
+    "website": "",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/fr/1/1b/Union_sportive_monastirienne.png"
+  }
+]

@@ -1,0 +1,32 @@
+.logo-image {
+  max-width: 64px;
+  max-height: 64px;
+  display: block;
+  margin-bottom: 8px;
+}
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    padding: 32px;
+  }
+  .team-card {
+    transition: box-shadow 0.2s;
+      max-width: 300px;
+      max-height: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      background-color: #f9f9f9;
+  }
+  .team-card:hover {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+  @media (max-width: 600px) {
+    .team-grid {
+      padding: 8px;
+      gap: 12px;
+    }
+  }
+

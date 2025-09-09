@@ -50,4 +50,7 @@ public class PlayerService {
         playerRepository.deleteById(id);
     }
 
+  public List<Player> getPlayersByTeam(String teamId) {
+    return playerRepository.findByTeamId(teamId);
+  }
 }

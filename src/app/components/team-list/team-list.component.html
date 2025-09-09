@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <span>{{ 'TUNISIAN_TEAMS' | translate }}</span>
+</mat-toolbar>
+
+<div class="team-grid">
+  <mat-card *ngFor="let team of teams" class="team-card" appearance="outlined">
+        <mat-grid-list cols="4">
+          <mat-grid-tile colspan="1" rowspan="2">
+              <img mat-card-image [src]="team.logoUrl" class="logo-image" alt="{{ team.name }} logo">
+          </mat-grid-tile>
+          <mat-grid-tile colspan="3">
+            {{ team.name }} <br>
+            {{ team.country }}
+          </mat-grid-tile>
+        </mat-grid-list>
+      <mat-card-content>
+        <p>
+          <label>{{ 'FOUNDED' | translate }}:</label><b>{{ team.foundedYear }}</b><br>
+          <label>{{ 'PRESIDENT' | translate }}:</label><b>{{ team.president }}</b><br>
+          <label>{{ 'COACH' | translate }}:</label><b>{{ team.coach }}</b><br>
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button color="primary" [href]="team.website" target="_blank">{{ 'OFFICIAL_SITE' | translate }}</a>
+        <button mat-button color="accent" (click)="viewPlayers(team.id)">{{ 'SEE_PLAYERS' | translate }}</button>
+      </mat-card-actions>
+  </mat-card>
+</div>
+
+<style>
+
+</style>

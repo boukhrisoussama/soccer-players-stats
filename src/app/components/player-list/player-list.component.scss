@@ -1,0 +1,18 @@
+.player-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 32px;
+}
+.player-card {
+  transition: box-shadow 0.2s;
+}
+.player-card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+@media (max-width: 600px) {
+  .player-grid {
+    padding: 8px;
+    gap: 12px;
+  }
+}

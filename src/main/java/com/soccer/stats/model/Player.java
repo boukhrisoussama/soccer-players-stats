@@ -19,6 +19,7 @@ import java.util.List;
 public class Player implements ModelObject {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     String id;
 
     @Column(name = "firstname")
@@ -56,7 +57,10 @@ public class Player implements ModelObject {
     @Column(name = "minutes_played")
     private int minutesPlayed;
 
-    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne(optional = true)
+    private Team team;
+
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<Transfer> transfer = new java.util.ArrayList<>();
 

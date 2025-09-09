@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/transfers")
+@RequestMapping("/api/transfers")
 @Tag(name = "Teams", description = "Team management API")
 public class TransferController {
 

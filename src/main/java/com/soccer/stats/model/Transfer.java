@@ -23,7 +23,6 @@ public class Transfer implements ModelObject {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name = "player_id")
     private Player player;
 
     @ManyToOne

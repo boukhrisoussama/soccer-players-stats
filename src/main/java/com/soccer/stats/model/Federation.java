@@ -18,8 +18,7 @@ import lombok.NoArgsConstructor;
 public class Federation implements ModelObject {
 
     @Id
-    @OneToOne
-    private Country country;
+    private String country;
     private String name;
     private boolean international;
 

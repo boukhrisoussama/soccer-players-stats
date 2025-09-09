@@ -1,0 +1,79 @@
+.app-logo {
+  height: 40px;
+  margin-right: 24px;
+  vertical-align: middle;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.search-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 32px;
+}
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.radio-group {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+.divider {
+  margin: 24px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.lang-select {
+  margin-left: auto;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.main-menu {
+  display: flex;
+  gap: 12px;
+  margin-left: 32px;
+}
+.main-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+.main-menu a.active {
+  border-bottom: 2px solid #fff;
+}
+.lang-select {
+  min-width: 120px;
+  margin-left: 16px;
+}
+.center-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+.btn-logo {
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@media (max-width: 800px) {
+  .main-menu {
+    gap: 6px;
+    margin-left: 8px;
+    font-size: 13px;
+  }
+  .lang-select {
+    min-width: 80px;
+    margin-left: 4px;
+  }
+}
+@media (max-width: 600px) {
+  .search-card {
+    padding: 16px;
+    max-width: 100vw;
+  }
+}

@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+  <img src="assets/img/Logo.png" alt="Soccer Players Tunisie" class="app-logo" />
+  <nav class="main-menu">
+    <a mat-button routerLink="/transfers">{{ 'TRANSFERS' | translate }}</a>
+    <a mat-button routerLink="/teams">{{ 'TEAMS' | translate }}</a>
+    <a mat-button routerLink="/players">{{ 'PLAYERS' | translate }}</a>
+    <a mat-button routerLink="/championship-calendar">{{ 'CHAMPIONSHIP_CALENDAR' | translate }}</a>
+    <a mat-button routerLink="/cup-calendar">{{ 'CUP_CALENDAR' | translate }}</a>
+  </nav>
+  <span class="spacer"></span>
+  <mat-form-field appearance="outline" class="lang-select">
+    <mat-label>{{ 'LANG' | translate }}</mat-label>
+    <mat-select [(ngModel)]="selectedLang" (selectionChange)="changeLang($event.value)">
+      <mat-option value="fr">Français</mat-option>
+      <mat-option value="en">English</mat-option>
+      <mat-option value="ar">العربية</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-toolbar>
+
+<div class="container">
+  <mat-card class="search-card">
+    <h2>{{ 'SEARCH_PLAYER_TEAM' | translate }}</h2>
+    <form class="search-form" (ngSubmit)="onSearch()">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'NAME' | translate }}</mat-label>
+        <input matInput [formControl]="searchControl" [matAutocomplete]="auto" [placeholder]="'NAME' | translate">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event.option.value)">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            <ng-container *ngIf="isPlayer(option)">
+              {{ option.firstName }} {{ option.lastName }}
+            </ng-container>
+            <ng-container *ngIf="isTeam(option)">
+              {{ option.name }}
+            </ng-container>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-radio-group [(ngModel)]="searchType" name="searchType" class="radio-group">
+        <mat-radio-button value="player">{{ 'PLAYER' | translate }}</mat-radio-button>
+        <mat-radio-button value="team">{{ 'TEAM' | translate }}</mat-radio-button>
+      </mat-radio-group>
+      <button mat-raised-button color="accent" type="submit">{{ 'SEARCH' | translate }}</button>
+    </form>
+    <button mat-stroked-button color="primary" (click)="goToTeams()">
+      <img src="assets/img/Logo.png" alt="Logo" class="btn-logo" />
+      {{ 'SEE_TEAMS' | translate }}
+    </button>
+  </mat-card>
+</div>

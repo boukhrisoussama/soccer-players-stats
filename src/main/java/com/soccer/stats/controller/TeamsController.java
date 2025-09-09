@@ -5,13 +5,14 @@ import com.soccer.stats.service.TeamService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/teams")
+@RequestMapping(value = "/api/teams", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name = "Teams", description = "Team management API")
 public class TeamsController {
 
