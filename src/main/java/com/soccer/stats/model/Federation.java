@@ -1,13 +1,12 @@
 package com.soccer.stats.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,8 +17,12 @@ import lombok.NoArgsConstructor;
 public class Federation implements ModelObject {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String country;
     private String name;
     private boolean international;
 
+    @OneToMany(mappedBy = "federation")
+    private List<Competition> competitions;
 }

@@ -16,8 +16,7 @@ public class SoccerPlayersStatsApplication {
         ConfigurableApplicationContext context = SpringApplication.run(SoccerPlayersStatsApplication.class, args);
         PlayersDbInitService initService = context.getBean(PlayersDbInitService.class);
       try {
-        initService.initializeTeamsDatabase();
-        initService.initializePlayersDatabase();
+        initService.initializeAllDatabases();
       } catch (IOException e) {
         log.error("Failed to initialize database", e);
         throw new RuntimeException(e);
