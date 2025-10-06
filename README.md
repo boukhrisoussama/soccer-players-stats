@@ -196,7 +196,4 @@ Les contributions sont les bienvenues :
 - amélioration du modèle,  
 - optimisation des batchs ou intégration AI.  
 
-**Auteur :** Oussama Boukhris  
-**Contact :** boukhrisoussama.dev@gmail.com  
-
 ---
