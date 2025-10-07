@@ -1,0 +1,6 @@
+- Keep configurable data at high levels.
+- Prefer polymorphism to if/else or switch/case.
+- Separate multi-threading code.
+- Prevent over-configurability.
+- Use dependency injection.
+- Follow Law of Demeter. A class should know only its direct dependencies.
