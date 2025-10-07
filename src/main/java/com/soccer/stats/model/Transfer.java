@@ -1,13 +1,9 @@
 package com.soccer.stats.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.math.BigInteger;
+import lombok.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @NoArgsConstructor
@@ -17,28 +13,30 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "TRANSFERS")
 public class Transfer implements ModelObject {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "player_id")
+    @JsonBackReference
     private Player player;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "from_team_id")
+    @JsonBackReference
     private Team fromTeam;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "to_team_id")
+    @JsonBackReference
     private Team toTeam;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Column(name = "transfer_date")
+    @Column(name = "date")
     private LocalDate transferDate;
 
-    @Column(name = "transfer_fee")
-    private BigInteger transferFee;
+    @Column(name = "fee")
+    private BigDecimal transferFee;
 
-
+    @Column(name = "contract_years")
+    private Integer contractYears;
 }

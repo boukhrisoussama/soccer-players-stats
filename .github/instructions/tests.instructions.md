@@ -1,0 +1,5 @@
+- One assert per test.
+- Readable.
+- Fast.
+- Independent.
+- Repeatable.

@@ -40,7 +40,7 @@ public class PlayerService {
                     existingPlayer.setAssistsMade(player.getAssistsMade());
                     existingPlayer.setYellowCards(player.getYellowCards());
                     existingPlayer.setRedCards(player.getRedCards());
-                    existingPlayer.setTransfer(player.getTransfer());
+                    existingPlayer.setTransfers(player.getTransfers());
                     return playerRepository.save(existingPlayer);
                 })
                 .orElseThrow(() -> new RuntimeException("Player not found with id: " + id));

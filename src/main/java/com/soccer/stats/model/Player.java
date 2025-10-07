@@ -1,5 +1,6 @@
 package com.soccer.stats.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -57,11 +59,19 @@ public class Player implements ModelObject {
     @Column(name = "minutes_played")
     private int minutesPlayed;
 
+    @Column(name = "photo_url")
+    private String photoUrl;
+
     @ManyToOne(optional = true)
+    @JsonBackReference
     private Team team;
 
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
-    private List<Transfer> transfer = new java.util.ArrayList<>();
+    @JsonBackReference
+    private List<Transfer> transfers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<PlayerMatchStats> matchStats = new ArrayList<>();
 
 }

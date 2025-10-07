@@ -1,0 +1,2 @@
+id,competitionId,homeTeamId,awayTeamId,date,stadium,scoreHome,scoreAway
+MATCH0001,COMP0001,TEAM0001,TEAM0002,2023-05-20 18:00:00,Stade Hammadi Agrebi,2,1

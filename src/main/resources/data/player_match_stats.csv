@@ -1,0 +1,3 @@
+id,playerId,matchId,minutesPlayed,goals,assists,yellowCards,redCards,rating
+PMS0001,PLYR0001,MATCH0001,90,1,0,1,0,7.5
+PMS0002,PLYR0002,MATCH0001,90,0,0,0,0,6.8
