@@ -1,0 +1,6 @@
+- Choose descriptive and unambiguous names.
+- Make meaningful distinction.
+- Use pronounceable names.
+- Use searchable names.
+- Replace magic numbers with named constants.
+- Avoid encodings. Don't append prefixes or type information.
