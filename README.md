@@ -102,7 +102,7 @@ Ces données sont exploitées par une **application web Angular intégrée à Sp
 
 ```mermaid
 graph TD
-    A[Sources externes (Sofifa, Transfermarkt, Football-Data)] -->|API/Scraping| B[Python Batch / Spring Batch]
+    A[Sources externes Sofifa, Transfermarkt, Football-Data] -->|API/Scraping| B[Python Batch / Spring Batch]
     B --> C[CSV Files players.csv, teams.csv...]
     C --> D[H2 Database]
     D --> E[Spring Boot Web App]
