@@ -1,0 +1,224 @@
+.page-container {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #fbe9e7; // light red background
+  min-height: 100vh;
+}
+
+.stats-container {
+  padding: 16px 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .stats-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #d32f2f; // red
+    margin-bottom: 18px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  .season-selector {
+    margin: 0 auto 16px auto;
+    display: block;
+    min-width: 180px;
+  }
+
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 180px;
+    gap: 10px;
+  }
+
+  .stats-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .kpi-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  .stats-category {
+    min-width: 260px;
+    max-width: 340px;
+    flex: 1 1 260px;
+    margin-bottom: 0;
+    box-shadow: 0 1px 4px rgba(211, 47, 47, 0.08); // red shadow
+  }
+
+  .category-avatar {
+    background: #ffebee; // light red
+    color: #d32f2f; // red
+  }
+
+  .kpi-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .kpi-card {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(211, 47, 47, 0.07);
+    padding: 8px 10px;
+    min-width: 90px;
+    flex: 1 1 90px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .kpi-icon {
+    font-size: 1.3rem;
+    color: #d32f2f; // red
+  }
+
+  .kpi-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .kpi-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .kpi-label {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  .kpi-description {
+    font-size: 0.75rem;
+    color: #888;
+  }
+
+  .kpi-trend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .trend-positive {
+    color: #388e3c;
+  }
+  .trend-negative {
+    color: #d32f2f;
+  }
+
+  .tables-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+  }
+
+  .table-card {
+    flex: 1 1 260px;
+    min-width: 260px;
+    max-width: 420px;
+    margin-bottom: 0;
+    box-shadow: 0 1px 4px rgba(211, 47, 47, 0.08);
+  }
+
+  .league-table,
+  .scorers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+  }
+
+  .league-table th,
+  .league-table td,
+  .scorers-table th,
+  .scorers-table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .league-table th,
+  .scorers-table th {
+    background-color: #ffebee; // light red
+    font-weight: bold;
+    color: #d32f2f; // red
+  }
+
+  .points-cell {
+    font-weight: 600;
+    color: #388e3c;
+  }
+
+  .golden-boot {
+    color: #fbc02d;
+    font-weight: 600;
+  }
+
+  .champion {
+    background: #e8f5e9;
+  }
+
+  .europe {
+    background: #ffebee; // light red for coherence
+  }
+
+  .relegation {
+    background: #ffcdd2; // lighter red
+  }
+
+  .goals-cell {
+    font-weight: 500;
+    color: #d32f2f; // red
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  .scorers-table + div {
+    margin-top: 18px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .kpi-categories,
+    .tables-section {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .stats-category,
+    .table-card {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 6px;
+
+    .stats-header {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 2px;
+
+    .stats-header {
+      font-size: 0.85rem;
+    }
+  }
+}

@@ -38,15 +38,6 @@
 		<tag>HEAD</tag>
 	</scm>
 
-<!--		<distributionManagement><snapshotRepository>-->
-<!--			<id>ossrh</id>-->
-<!--			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>-->
-<!--		</snapshotRepository>-->
-<!--		<repository>-->
-<!--			<id>ossrh</id>-->
-<!--			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-<!--		</repository>-->
-<!--	</distributionManagement>-->
 	<repositories>
 		<repository>
 			<id>snapshots-repo</id>
@@ -127,7 +118,7 @@
 		<maven.surefire.version>3.0.0-M5</maven.surefire.version>
 		<maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
 		<maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
-		<sonar.version>3.9.0.2155</sonar.version>
+		<sonar.version>${sonar-maven-plugin.version}</sonar.version>
 		<jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<!-- dependencies -->
@@ -145,7 +136,9 @@
 		<testcontainers.version>1.9.1</testcontainers.version>
 		<junit-jupiter.version>5.9.1</junit-jupiter.version>
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
-	</properties>
+    <sonar-maven-plugin.version>3.9.0.2155</sonar-maven-plugin.version>
+    <jsoup.version>1.17.2</jsoup.version>
+  </properties>
 
 	<dependencyManagement>
 		<dependencies>
@@ -295,6 +288,13 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>${springdoc.version}</version>
 		</dependency>
+
+		<!-- Jsoup HTML parser -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>${jsoup.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -329,6 +329,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>${sonar-maven-plugin.version}</version> <!-- Replace with the latest version -->
+      </plugin>
 		</plugins>
 	</build>
 

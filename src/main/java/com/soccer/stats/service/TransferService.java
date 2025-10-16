@@ -32,8 +32,8 @@ public class TransferService {
                     existingTransfer.setPlayer(transfer.getPlayer());
                     existingTransfer.setFromTeam(transfer.getFromTeam());
                     existingTransfer.setToTeam(transfer.getToTeam());
-                    existingTransfer.setTransferDate(transfer.getTransferDate());
-                    existingTransfer.setTransferFee(transfer.getTransferFee());
+                    existingTransfer.setDate(transfer.getDate());
+                    existingTransfer.setFee(transfer.getFee());
                     return transferRepository.save(existingTransfer);
                 })
                 .orElseThrow(() -> new RuntimeException("Transfer not found with id: " + id));

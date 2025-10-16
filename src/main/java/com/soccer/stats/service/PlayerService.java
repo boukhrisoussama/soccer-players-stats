@@ -53,4 +53,8 @@ public class PlayerService {
   public List<Player> getPlayersByTeam(String teamId) {
     return playerRepository.findByTeamId(teamId);
   }
+
+  public List<Player> searchPlayersByName(String name) {
+    return playerRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name, name);
+  }
 }

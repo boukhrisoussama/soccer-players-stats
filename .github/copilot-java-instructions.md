@@ -1,6 +1,7 @@
 ---
 applyTo: "**/*.java"
 ---
+
 # GitHub Copilot Instructions for Java
 
 Please follow these guidelines when generating Java code:

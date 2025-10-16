@@ -1,0 +1,94 @@
+<div class="article-list-container">
+  <!-- Filters Section -->
+  <mat-card class="filters-section">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>{{ 'SEARCH_ARTICLES' | translate }}</mat-label>
+      <input matInput (keyup)="onSearch($event)" [placeholder]="'SEARCH_PLACEHOLDER' | translate">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <div class="filters">
+      <mat-button-toggle-group [(ngModel)]="selectedType" (change)="onTypeChange()">
+        <mat-button-toggle value="all">{{ 'ALL' | translate }}</mat-button-toggle>
+        <mat-button-toggle value="article">{{ 'ARTICLES' | translate }}</mat-button-toggle>
+        <mat-button-toggle value="video">{{ 'VIDEOS' | translate }}</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'SOURCE' | translate }}</mat-label>
+        <mat-select [(ngModel)]="selectedSource" (selectionChange)="onSourceChange()">
+          <mat-option>{{ 'ALL_SOURCES' | translate }}</mat-option>
+          <mat-option *ngFor="let source of sources" [value]="source">
+            {{source}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'TAGS' | translate }}</mat-label>
+        <mat-select [(ngModel)]="selectedTags" multiple (selectionChange)="onTagsChange()">
+          <mat-option *ngFor="let tag of availableTags" [value]="tag">
+            {{tag}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-card>
+
+  <!-- Articles Grid -->
+  <div class="articles-grid" *ngIf="!isLoading">
+    <mat-card class="article-card" *ngFor="let article of filteredArticles">
+      <!-- Article Header -->
+      <mat-card-header>
+        <div mat-card-avatar *ngIf="article.imageUrl" [style.background-image]="'url(' + article.imageUrl + ')'"></div>
+        <mat-card-title>{{article.title}}</mat-card-title>
+        <mat-card-subtitle>
+          {{article.source}} - {{getFormattedDate(article.date)}}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <!-- Article Media -->
+      <img mat-card-image *ngIf="article.imageUrl && article.type === 'article'" [src]="article.imageUrl" [alt]="article.title">
+      <div class="video-thumbnail" *ngIf="article.type === 'video'" (click)="openArticle(article)">
+        <mat-icon class="play-icon">play_circle_outline</mat-icon>
+      </div>
+
+      <!-- Article Content -->
+      <mat-card-content>
+        <p>{{article.excerpt}}</p>
+        <mat-chip-list aria-label="Tags">
+          <mat-chip *ngFor="let tag of article.tags" [color]="tag.color" selected>
+            {{tag.name}}
+          </mat-chip>
+        </mat-chip-list>
+        <div class="related-entities">
+          <span *ngFor="let player of article.players" class="player-tag">
+            <mat-icon>person</mat-icon> {{player}}
+          </span>
+          <span *ngFor="let team of article.teams" class="team-tag">
+            <mat-icon>groups</mat-icon> {{team}}
+          </span>
+        </div>
+      </mat-card-content>
+
+      <!-- Article Actions -->
+      <mat-card-actions align="end">
+        <button mat-button (click)="openArticle(article)">
+          <mat-icon>{{article.type === 'video' ? 'play_arrow' : 'read_more'}}</mat-icon>
+          {{article.type === 'video' ? ('WATCH' | translate) : ('READ_MORE' | translate)}}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div class="loading-spinner" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <!-- No Results Message -->
+  <div class="no-results" *ngIf="!isLoading && filteredArticles.length === 0">
+    <mat-icon>search_off</mat-icon>
+    <p>{{ 'NO_ARTICLES_FOUND' | translate }}</p>
+  </div>
+</div>

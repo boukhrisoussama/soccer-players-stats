@@ -1,0 +1,68 @@
+<mat-toolbar color="primary" class="app-header font-main">
+  <span class="header-title">{{championship?.name}}</span>
+</mat-toolbar>
+
+<div class="page-container font-main">
+  <div *ngIf="loading" class="loading-container">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+  <div *ngIf="!loading && championship" class="championship-container">
+    <mat-card class="info-card">
+      <mat-card-content>
+        <h2>{{championship.name}}</h2>
+        <p>{{'COUNTRY' | translate}}: {{championship.country}}</p>
+        <p>{{'SEASON' | translate}}: {{currentSeason}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="matchday-selector">
+      <mat-form-field>
+        <mat-label>{{'SELECT_MATCHDAY' | translate}}</mat-label>
+        <mat-select [(value)]="selectedMatchday" (selectionChange)="onMatchdayChange($event.value)">
+          <mat-option *ngFor="let day of matchdays" [value]="day">
+            {{'MATCHDAY' | translate}} {{day}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-card class="calendar-card">
+      <mat-calendar
+        [selected]="selectedDate"
+        (selectedChange)="handleDateSelected($event)"
+        [dateClass]="dateClassCallback">
+      </mat-calendar>
+    </mat-card>
+
+    <mat-card class="matches-card" *ngIf="filteredMatches.length">
+      <mat-card-header>
+        <mat-card-title>
+          {{'MATCHDAY' | translate}} {{selectedMatchday}} - {{selectedDate | date:'fullDate'}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="matches-table">
+          <thead>
+            <tr>
+              <th>{{'TIME' | translate}}</th>
+              <th>{{'HOME_TEAM' | translate}}</th>
+              <th>{{'SCORE' | translate}}</th>
+              <th>{{'AWAY_TEAM' | translate}}</th>
+              <th>{{'STADIUM' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let match of filteredMatches">
+              <td>{{getMatchTime(isDateArray(match.date) ? match.date : undefined)}}</td>
+              <td>{{match.homeTeamId}}</td>
+              <td class="score">{{match.scoreHome || 0}} - {{match.scoreAway || 0}}</td>
+              <td>{{match.awayTeamId}}</td>
+              <td>{{match.stadium}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

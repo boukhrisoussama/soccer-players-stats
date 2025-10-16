@@ -1,0 +1,214 @@
+<div class="page-container font-main">
+  <div class="stats-container">
+    <!-- Header -->
+    <header class="stats-header">
+      <div class="header-content">
+        <h1>{{ 'STATISTICS_AND_ANALYTICS' | translate }}</h1>
+      </div>
+      <mat-form-field appearance="outline" class="season-selector">
+        <mat-label>{{ 'SEASON' | translate }}</mat-label>
+        <mat-select [(ngModel)]="selectedSeason" (selectionChange)="onSeasonChange()">
+          <mat-option value="2021-2022">2024-2025</mat-option>
+          <mat-option value="2023-2024">2023-2024</mat-option>
+          <mat-option value="2022-2023">2022-2023</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </header>
+
+    <!-- Loading Spinner -->
+    <div class="loading-container" *ngIf="isLoading">
+      <mat-spinner></mat-spinner>
+      <p>{{ 'LOADING_STATS' | translate }}</p>
+    </div>
+
+    <!-- Stats Content -->
+    <div class="stats-content" *ngIf="!isLoading">
+
+      <!-- KPI Categories Grid -->
+      <div class="kpi-categories">
+
+        <!-- Competition Stats -->
+        <mat-card class="stats-category" [class]="competitionStats.color">
+          <mat-card-header>
+            <div mat-card-avatar class="category-avatar">
+              <mat-icon>{{competitionStats.icon}}</mat-icon>
+            </div>
+            <mat-card-title>{{ competitionStats.title | translate }}</mat-card-title>
+            <mat-card-subtitle>{{ 'OVERALL_COMPETITION_METRICS' | translate }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="kpi-grid">
+              <div class="kpi-card" *ngFor="let kpi of competitionStats.kpis">
+                <div class="kpi-icon">
+                  <mat-icon>{{kpi.icon}}</mat-icon>
+                </div>
+                <div class="kpi-content">
+                  <div class="kpi-value">{{kpi.value}}</div>
+                  <div class="kpi-label">{{ kpi.label | translate }}</div>
+                  <div class="kpi-description" *ngIf="kpi.description">{{kpi.description}}</div>
+                  <div class="kpi-trend" *ngIf="kpi.trend && kpi.percentage" [class]="getTrendClass(kpi.trend)">
+                    <mat-icon>{{getTrendIcon(kpi.trend)}}</mat-icon>
+                    <span>{{kpi.percentage}}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Team Stats -->
+        <mat-card class="stats-category" [class]="teamStats.color">
+          <mat-card-header>
+            <div mat-card-avatar class="category-avatar">
+              <mat-icon>{{teamStats.icon}}</mat-icon>
+            </div>
+            <mat-card-title>{{ teamStats.title | translate }}</mat-card-title>
+            <mat-card-subtitle>{{ 'TEAM_PERFORMANCE_METRICS' | translate }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="kpi-grid">
+              <div class="kpi-card" *ngFor="let kpi of teamStats.kpis">
+                <div class="kpi-icon">
+                  <mat-icon>{{kpi.icon}}</mat-icon>
+                </div>
+                <div class="kpi-content">
+                  <div class="kpi-value">{{kpi.value}}</div>
+                  <div class="kpi-label">{{ kpi.label | translate }}</div>
+                  <div class="kpi-description" *ngIf="kpi.description">{{kpi.description}}</div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Player Stats -->
+        <mat-card class="stats-category" [class]="playerStats.color">
+          <mat-card-header>
+            <div mat-card-avatar class="category-avatar">
+              <mat-icon>{{playerStats.icon}}</mat-icon>
+            </div>
+            <mat-card-title>{{ playerStats.title | translate }}</mat-card-title>
+            <mat-card-subtitle>{{ 'INDIVIDUAL_PLAYER_METRICS' | translate }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="kpi-grid">
+              <div class="kpi-card" *ngFor="let kpi of playerStats.kpis">
+                <div class="kpi-icon">
+                  <mat-icon>{{kpi.icon}}</mat-icon>
+                </div>
+                <div class="kpi-content">
+                  <div class="kpi-value">{{kpi.value}}</div>
+                  <div class="kpi-label">{{ kpi.label | translate }}</div>
+                  <div class="kpi-description" *ngIf="kpi.description">{{kpi.description}}</div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Detailed Tables Section -->
+      <div class="tables-section">
+
+        <!-- League Table -->
+        <mat-card class="table-card">
+          <mat-card-header>
+            <mat-card-title>{{ 'LEAGUE_TABLE' | translate }}</mat-card-title>
+            <mat-card-subtitle>{{ 'CURRENT_STANDINGS' | translate }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <table mat-table [dataSource]="leagueTable" class="league-table">
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef>{{ 'POS' | translate }}</th>
+                <td mat-cell *matCellDef="let element"
+                    [class.champion]="element.position === 1"
+                    [class.europe]="element.position <= 4"
+                    [class.relegation]="element.position > 12">
+                  {{element.position}}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef>{{ 'TEAM' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{element.team}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="played">
+                <th mat-header-cell *matHeaderCellDef>{{ 'PLAYED' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{element.played}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="wins">
+                <th mat-header-cell *matHeaderCellDef>{{ 'WINS' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{element.wins}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="draws">
+                <th mat-header-cell *matHeaderCellDef>{{ 'DRAWS' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{element.draws}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="losses">
+                <th mat-header-cell *matHeaderCellDef>{{ 'LOSSES' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{element.losses}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef>{{ 'POINTS' | translate }}</th>
+                <td mat-cell *matCellDef="let element" class="points-cell">{{element.points}}</td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="['position', 'team', 'played', 'wins', 'draws', 'losses', 'points']"></tr>
+              <tr mat-row *matRowDef="let row; columns: ['position', 'team', 'played', 'wins', 'draws', 'losses', 'points'];"></tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Top Scorers -->
+        <mat-card class="table-card">
+          <mat-card-header>
+            <mat-card-title>{{ 'TOP_SCORERS' | translate }}</mat-card-title>
+            <mat-card-subtitle>{{ 'LEADING_GOAL_SCORERS' | translate }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <table mat-table [dataSource]="topScorers" class="scorers-table">
+              <ng-container matColumnDef="rank">
+                <th mat-header-cell *matHeaderCellDef>{{ 'RANK' | translate }}</th>
+                <td mat-cell *matCellDef="let element"
+                    [class.golden-boot]="element.rank === 1">
+                  {{element.rank}}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="player">
+                <th mat-header-cell *matHeaderCellDef>{{ 'PLAYER' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{element.player}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef>{{ 'TEAM' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{element.team}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="goals">
+                <th mat-header-cell *matHeaderCellDef>{{ 'GOALS' | translate }}</th>
+                <td mat-cell *matCellDef="let element" class="goals-cell">
+                  <mat-icon>sports_soccer</mat-icon>
+                  {{element.goals}}
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="['rank', 'player', 'team', 'goals']"></tr>
+              <tr mat-row *matRowDef="let row; columns: ['rank', 'player', 'team', 'goals'];"></tr>
+            </table>
+            <!-- ECharts Bar Chart for Top Scorers -->
+            <div style="margin-top: 32px;">
+              <h3 style="text-align:center;">{{ 'TOP_SCORERS_CHART' | translate }}</h3>
+              <div echarts [options]="topScorersChartOption" style="height: 350px;"></div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

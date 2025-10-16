@@ -32,10 +32,10 @@ public class Transfer implements ModelObject {
     private Team toTeam;
 
     @Column(name = "date")
-    private LocalDate transferDate;
+    private LocalDate date;
 
     @Column(name = "fee")
-    private BigDecimal transferFee;
+    private Double fee;
 
     @Column(name = "contract_years")
     private Integer contractYears;
