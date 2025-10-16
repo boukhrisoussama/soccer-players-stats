@@ -24,7 +24,7 @@ public class PlayersController {
 
     @Operation(summary = "Get all players")
     @GetMapping
-    public List<Player> getPlayers(@RequestParam("teamId") String teamId) {
+    public List<Player> getPlayers(@RequestParam(value = "teamId", required = false) String teamId) {
         return (teamId != null ? playerService.getPlayersByTeam(teamId) : playerService.getAllPlayers());
     }
 
@@ -53,5 +53,11 @@ public class PlayersController {
     @DeleteMapping("/{id}")
     public void deletePlayer(@PathVariable String id) {
         playerService.deletePlayer(id);
+    }
+
+    @Operation(summary = "Search players by name")
+    @GetMapping("/search")
+    public List<Player> searchPlayers(@RequestParam("name") String name) {
+        return playerService.searchPlayersByName(name);
     }
 }

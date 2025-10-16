@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, String> {
+    List<Player> findByTeamId(String teamId);
+    List<Player> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String firstName, String lastName);
 
-  List<Player> findByTeamId(String teamId);
-    // This interface will automatically provide CRUD operations for Player entities
-    // Additional custom query methods can be defined here if needed
+    default Object getPlayerStats() { return List.of(); }
 }

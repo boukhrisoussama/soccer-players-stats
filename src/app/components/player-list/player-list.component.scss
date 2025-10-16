@@ -1,18 +1,3 @@
-.player-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  padding: 32px;
-}
-.player-card {
-  transition: box-shadow 0.2s;
-}
-.player-card:hover {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-}
-@media (max-width: 600px) {
-  .player-grid {
-    padding: 8px;
-    gap: 12px;
-  }
-}
+.player-grid { display:flex; flex-wrap:wrap; gap:12px; }
+.player-card { width: 260px; }
+.player-avatar img { width:40px; height:40px; border-radius:20px; } .spacer{flex:1 1 auto;} .stats{display:flex; gap:8px; margin-top:8px;}

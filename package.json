@@ -1,5 +1,5 @@
 {
-  "name": "soccer-players-frontend",
+  "name": "soccer-players-stats",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -22,6 +22,8 @@
     "@angular/router": "^17.3.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "echarts": "^6.0.0",
+    "ngx-echarts": "^20.0.2",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
     "zone.js": "^0.14.3"

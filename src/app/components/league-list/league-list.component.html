@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" class="app-header font-main">
+  <span class="header-title">{{ 'LEAGUES' | translate }}</span>
+</mat-toolbar>
+<div class="page-container font-main">
+  <div *ngIf="loading"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></div>
+  <mat-list *ngIf="!loading">
+    <mat-list-item *ngFor="let l of leagues">
+      <h3 mat-line>{{l.name}}</h3>
+      <p mat-line>{{l.country}}</p>
+    </mat-list-item>
+  </mat-list>
+</div>

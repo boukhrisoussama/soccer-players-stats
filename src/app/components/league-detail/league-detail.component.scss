@@ -1,0 +1,64 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+}
+
+table {
+  width: 100%;
+  margin-top: 16px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+.championship-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-card {
+  background: #f5f5f5;
+  padding: 16px;
+}
+
+.matchday-selector {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.calendar-card {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.matches-card {
+  margin-top: 20px;
+}
+
+.matches-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .score {
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.match-date-highlight {
+  background-color: #e3f2fd;
+  border-radius: 50%;
+}

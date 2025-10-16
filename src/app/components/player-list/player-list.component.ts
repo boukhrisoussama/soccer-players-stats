@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from '../../services/api.service';
 import { Player } from '../../models/player.model';
 
@@ -9,29 +11,39 @@ import { Player } from '../../models/player.model';
   styleUrls: ['./player-list.component.scss']
 })
 export class PlayerListComponent implements OnInit {
-  players: Player[] = [];
-  teamId: string | null = null;
+  displayedColumns: string[] = ['photo', 'name', 'position', 'club', 'goals', 'assists', 'minutes'];
+  dataSource = new MatTableDataSource<Player>([]);
+  loading = false;
+  search = '';
 
-  constructor(
-    private route: ActivatedRoute,
-    private apiService: ApiService,
-    private router: Router
-  ) {}
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit() {
-    this.teamId = this.route.snapshot.paramMap.get('teamId');
-    if(this.teamId != null) {
-      this.apiService.getPlayersByTeam(this.teamId).subscribe(data => this.players = data);
-    }
+  constructor(private api: ApiService) { }
+
+  ngOnInit(): void {
+    this.load();
   }
 
-  viewPlayer(playerId: string) {
-    this.router.navigate(['/players', playerId]);
+  load() {
+    this.loading = true;
+    this.api.getPlayers().subscribe({
+      next: data => {
+        this.dataSource.data = data;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.loading = false;
+      },
+      error: err => { console.error(err); this.loading = false; }
+    });
   }
 
-  backToTeamsList() {
-      window.history.back();
-      return false;
+  applyFilter() {
+    const filterValue = this.search.trim().toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
+  viewPlayer(id: string) {
+    window.location.href = '/players/' + id;
+  }
 }

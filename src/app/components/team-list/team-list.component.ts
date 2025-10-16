@@ -14,7 +14,9 @@ export class TeamListComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit() {
-    this.apiService.getTeamsByCountry('Tunisia').subscribe(data => this.teams = data);
+    this.apiService.getTeamsByCountry('Tunisia').subscribe(
+      (teams: Team[]) => this.teams = teams
+    );
   }
 
   viewPlayers(teamId: string) {

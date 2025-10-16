@@ -46,4 +46,12 @@ public class TeamService {
     public void deleteTeam(String id) {
         teamRepository.deleteById(id);
     }
+
+  public List<Team> getTeamsByCountry(String country) {
+    return teamRepository.findByCountryIgnoreCase(country);
+  }
+
+  public List<Team> searchTeamsByName(String name) {
+    return teamRepository.findByNameContainingIgnoreCase(name);
+  }
 }

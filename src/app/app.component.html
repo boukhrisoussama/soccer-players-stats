@@ -1,1 +1,39 @@
+<header>
+<mat-toolbar>
+  <a mat-button routerLink="/"><img src="assets/img/Logo.png" alt="Soccer Players Tunisie" class="app-logo" /></a>
+    <!-- Menu principal -->
+    <nav class="main-menu">
+      <button mat-raised-button color="primary" (click)="goToPlayers()">
+        <mat-icon>person</mat-icon> {{ 'PLAYERS' | translate }}
+      </button>
+      <button mat-raised-button color="primary" (click)="goToTeams()">
+        <mat-icon>groups</mat-icon> {{ 'TEAMS' | translate }}
+      </button>
+      <button mat-raised-button color="primary" (click)="goToChampionship()">
+        <mat-icon>emoji_events</mat-icon> {{ 'CHAMPIONSHIP_CALENDAR' | translate }}
+      </button>
+      <button mat-raised-button color="primary" (click)="goToCup()">
+        <mat-icon>emoji_events</mat-icon> {{ 'CUP_CALENDAR' | translate }}
+      </button>
+      <button mat-raised-button color="primary" (click)="goToTransfers()">
+        <mat-icon>swap_horiz</mat-icon> {{ 'TRANSFERS' | translate }}
+      </button>
+      <button mat-raised-button color="primary" (click)="goToStats()">
+        <mat-icon>bar_chart</mat-icon> {{ 'STATS' | translate }}
+      </button>
+      <button mat-raised-button color="primary" (click)="goToPress()">
+        <mat-icon>bar_chart</mat-icon> {{ 'PRESS' | translate }}
+      </button>
+  </nav>
+  <span class="spacer"></span>
+  <mat-form-field appearance="fill" class="lang-select">
+    <mat-select [(ngModel)]="selectedLang" (selectionChange)="changeLang($event.value)">
+      <mat-option value="fr">Français</mat-option>
+      <mat-option value="en">English</mat-option>
+      <mat-option value="ar">العربية</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-toolbar>
+</header>
+
 <router-outlet></router-outlet>

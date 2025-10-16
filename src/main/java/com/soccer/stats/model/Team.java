@@ -1,7 +1,12 @@
 package com.soccer.stats.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,24 +43,33 @@ public class Team implements ModelObject {
     @Column(name = "logo_url")
     private String logoUrl;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private java.util.List<Player> players = new java.util.ArrayList<>();
+    @Column(name = "coach")
+    private String coach;
+
+    @OneToMany(mappedBy = "team")
+    @JsonIgnore // Prevent infinite recursion
+    private List<Player> players = new ArrayList<>();
 
     @OneToMany(mappedBy = "homeTeam", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private java.util.List<Match> homeMatches = new java.util.ArrayList<>();
+    @JsonIgnore // Prevent infinite recursion
+    private List<Match> homeMatches = new ArrayList<>();
 
     @OneToMany(mappedBy = "awayTeam", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private java.util.List<Match> awayMatches = new java.util.ArrayList<>();
+    @JsonIgnore // Prevent infinite recursion
+    private List<Match> awayMatches = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "competition_id")
-    @com.fasterxml.jackson.annotation.JsonBackReference
+    @JsonBackReference
+    @JsonIgnore // Prevent infinite recursion
     private Competition competition;
 
     @OneToMany(mappedBy = "fromTeam", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private java.util.List<Transfer> transfersFrom = new java.util.ArrayList<>();
+    @JsonIgnore // Prevent infinite recursion
+    private List<Transfer> transfersFrom = new ArrayList<>();
 
     @OneToMany(mappedBy = "toTeam", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private java.util.List<Transfer> transfersTo = new java.util.ArrayList<>();
+    @JsonIgnore // Prevent infinite recursion
+    private List<Transfer> transfersTo = new ArrayList<>();
 
 }

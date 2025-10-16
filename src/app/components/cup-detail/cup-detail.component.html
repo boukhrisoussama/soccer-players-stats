@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" class="app-header font-main">
+  <span class="header-title">{{ cup?.name }}</span>
+</mat-toolbar>
+
+<div class="page-container font-main">
+  <div *ngIf="loading" class="loading-container">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+  <div *ngIf="!loading && cup">
+    <!-- Cup specific layout for tournament bracket will go here -->
+    <h2>{{ 'CUP_MATCHES' | translate }}</h2>
+    <!-- Add cup specific match display -->
+  </div>
+</div>
+

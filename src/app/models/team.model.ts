@@ -8,4 +8,5 @@ export interface Team {
     coach: string;
     website: string;
     logoUrl: string;
+    competitionId?: string;
 }

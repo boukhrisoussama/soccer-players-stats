@@ -66,6 +66,7 @@ public class Player implements ModelObject {
     @JsonBackReference
     private Team team;
 
+    // Remove or ignore transfers/matchStats if not needed in frontend serialization
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private List<Transfer> transfers = new ArrayList<>();

@@ -1,79 +1,94 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApiService } from '../../services/api.service';
-import { TranslateService } from '@ngx-translate/core';
+// landing-page.component.ts
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { debounceTime, switchMap, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { ApiService } from '../../services/api.service';
+import { Article } from '../../models/article.model';
 import { Player } from '../../models/player.model';
 import { Team } from '../../models/team.model';
+
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPageComponent {
+export class LandingPageComponent implements OnInit {
   searchControl = new FormControl('');
-  searchType: 'player' | 'team' = 'player';
-  selectedLang = localStorage.getItem('lang') || 'fr';
-  filteredOptions: Observable<(Player | Team)[]> = of([]);
-  searchQuery = '';
+  searchType = 'player';
+  filteredOptions: Observable<any[]>;
+  latestArticles: Article[] = [];
+  leagueStandings: Team[] = [];
+  playerPerformances: Player[] = [];
 
-  constructor(
-    private apiService: ApiService,
-    private router: Router,
-    private translate: TranslateService,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor(private apiService: ApiService) {
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
-      debounceTime(300),
-      switchMap(value => this.fetchSuggestions(value))
+      map(value => this._filter(value || ''))
     );
   }
 
-  fetchSuggestions(value: string | null): Observable<(Player | Team)[]> {
-    if (!value || value.length < 2) return of([]);
-    if (this.searchType === 'player') {
-      return this.apiService.searchPlayers(value);
-    } else {
-      return this.apiService.searchTeams(value);
-    }
+  ngOnInit() {
+    this.loadLatestArticles();
+    this.loadLeagueStandings();
+    this.loadPlayerPerformances();
   }
 
-  onOptionSelected(option: Player | Team) {
-    if (this.searchType === 'player' && option && 'id' in option) {
-      this.router.navigate(['/players', option.id]);
-    } else if (this.searchType === 'team' && option && 'id' in option) {
-      this.router.navigate(['/teams', option.id]);
-    }
+  getOptionType(option: any): string {
+    if (option.firstName && option.lastName) return 'player';
+    if (option.name && !option.firstName) return 'team';
+    if (option.title) return 'article';
+    return '';
   }
 
   onSearch() {
-    if (this.searchType === 'player') {
-      this.router.navigate(['/players'], { queryParams: { search: this.searchControl.value } });
-    } else {
-      this.router.navigate(['/teams'], { queryParams: { search: this.searchControl.value } });
+    const value = this.searchControl.value;
+    if (!value) return;
+
+    switch (this.searchType) {
+      case 'player':
+        // Handle player search
+        break;
+      case 'team':
+        // Handle team search
+        break;
+      case 'article':
+        // Handle article search
+        break;
     }
   }
 
-  goToTeams() {
-    this.router.navigate(['/teams']);
+  onOptionSelected(option: any) {
+    const type = this.getOptionType(option);
+    // Handle selection based on type
   }
 
-  changeLang(selectedLang: string) {
-    this.selectedLang = selectedLang;
-    localStorage.setItem('lang', selectedLang);
-    this.translate.use(selectedLang);
-    this.cdr.markForCheck();
+  private _filter(value: string): any[] {
+    const filterValue = value.toLowerCase();
+    // Implement filtering logic based on searchType
+    return [];
   }
 
-  isPlayer(option: Player | Team): option is Player {
-    return (option as Player).firstName !== undefined && (option as Player).lastName !== undefined;
+  private loadLatestArticles(): void {
+    this.apiService.getLatestArticles().subscribe(
+      (articles: Article[]) => this.latestArticles = articles
+    );
   }
 
-  isTeam(option: Player | Team): option is Team {
-    return (option as Team).name !== undefined;
+  private loadLeagueStandings(): void {
+    this.apiService.getLeagueStandings().subscribe(
+      (standings: Team[]) => this.leagueStandings = standings
+    );
+  }
+
+  private loadPlayerPerformances(): void {
+    this.apiService.getPlayerPerformances().subscribe(
+      (performances: Player[]) => this.playerPerformances = performances
+    );
+  }
+
+  readArticle(article: Article) {
+    // Implement article reading logic
   }
 }

@@ -5,9 +5,14 @@ import com.soccer.stats.model.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface TeamRepository extends JpaRepository<Team, String> {
-    // This interface will automatically provide CRUD operations for Team entities
-    // Additional custom query methods can be defined here if needed
-}
+    List<Team> findByCountry(String country);
+    List<Team> findByNameContainingIgnoreCase(String name);
 
+    default Object getTeamStats() { return List.of(); }
+
+  List<Team> findByCountryIgnoreCase(String country);
+}

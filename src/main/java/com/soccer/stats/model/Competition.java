@@ -1,5 +1,6 @@
 package com.soccer.stats.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -21,7 +22,7 @@ public class Competition implements ModelObject {
     @JoinColumn(name = "federation_id", referencedColumnName = "id")
     private Federation federation;
 
-    // @Column(name = "country")
+    @Column(name = "country")
     private String country;
 
     @Enumerated(EnumType.STRING)
@@ -29,7 +30,7 @@ public class Competition implements ModelObject {
     private CompetitionType type;
 
     @OneToMany(mappedBy = "competition", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @com.fasterxml.jackson.annotation.JsonManagedReference
+    @JsonManagedReference
     private List<Team> teams;
 
     @OneToMany(mappedBy = "competition", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -21,8 +21,8 @@ public class TeamsController {
 
     @Operation(summary = "Get all teams")
     @GetMapping
-    public List<Team> getTeams() {
-        return teamService.getAllTeams();
+    public List<Team> getTeams(@RequestParam(value = "country", required = false) String country) {
+        return country != null ? teamService.getTeamsByCountry(country) : teamService.getAllTeams();
     }
 
     @Operation(summary = "Get team by ID")
@@ -47,5 +47,10 @@ public class TeamsController {
     @DeleteMapping("/{id}")
     public void deleteTeam(@PathVariable String id) {
         teamService.deleteTeam(id);
+    }
+
+    @GetMapping("/search")
+    public List<Team> searchTeams(@RequestParam("name") String name) {
+        return teamService.searchTeamsByName(name);
     }
 }

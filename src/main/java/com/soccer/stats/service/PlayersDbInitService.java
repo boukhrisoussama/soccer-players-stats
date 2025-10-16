@@ -4,6 +4,7 @@ import com.soccer.stats.model.*;
 import com.soccer.stats.repository.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import com.soccer.stats.model.Player;
 import com.soccer.stats.model.Team;
@@ -159,16 +160,17 @@ public class PlayersDbInitService {
         try {
           Match existing = matchRepository.findById(fields[0].trim()).orElse(null);
           if (existing == null) {
+            Competition competition = loadedCompetitions.get(fields[1].trim());
             Match match = Match.builder()
               .id(fields[0].trim())
-              .competition(loadedCompetitions.get(fields[1].trim()))
+              .competition(competition)
+              .competitionId(competition != null ? competition.getId() : null)
               .homeTeam(loadedTeams.get(fields[2].trim()))
               .awayTeam(loadedTeams.get(fields[3].trim()))
-              .date(LocalDateTime.parse(fields[4].trim(), java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+              .date(LocalDateTime.parse(fields[4].trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
               .stadium(fields[5].trim())
               .scoreHome(parseInt(fields[6].trim()))
               .scoreAway(parseInt(fields[7].trim()))
-              .playerStats(new ArrayList<>())
               .build();
             matchRepository.save(match);
             loadedMatches.put(match.getId(), match);
@@ -201,8 +203,8 @@ public class PlayersDbInitService {
               .player(loadedPlayers.get(fields[1].trim()))
               .fromTeam(loadedTeams.get(fields[2].trim()))
               .toTeam(loadedTeams.get(fields[3].trim()))
-              .transferDate(LocalDate.parse(fields[4].trim()))
-              .transferFee(new BigDecimal(fields[5].trim()))
+              .date(LocalDate.parse(fields[4].trim()))
+              .fee(Double.parseDouble(fields[5].trim()))
               .contractYears(parseInt(fields[6].trim()))
               .build();
             transferRepository.save(transfer);
